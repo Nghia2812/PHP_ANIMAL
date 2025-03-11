@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Thú Cưng - PNTPet</title>
+    <!-- Bootstrap CSS từ CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <!-- Font Awesome cho biểu tượng -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #78c143;
+            --secondary-color: #f8f9fa;
+            --dark-color: #333;
+            --light-color: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+        
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        
+        .pet-image {
+            border-radius: 10px;
+            overflow: hidden;
+            max-height: 400px;
+        }
+        
+        .pet-details {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px;
+        }
+        
+        .pet-name {
+            color: var(--primary-color);
+            font-weight: bold;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .pet-info {
+            margin-bottom: 20px;
+        }
+        
+        .pet-tag {
+            background-color: #e9f7e0;
+            color: var(--primary-color);
+            border-radius: 20px;
+            padding: 5px 12px;
+            margin-right: 5px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .comment-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .comment {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+        }
+        
+        .comment:last-child {
+            border-bottom: none;
+        }
+        
+        .comment-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+        
+        .search-form {
+            position: relative;
+        }
+        
+        .search-form .btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .sidebar-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-title {
+            color: var(--primary-color);
+            font-weight: bold;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .related-pet {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .related-pet:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .related-pet-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        
+        .related-pet-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+        
+        .related-pet-desc {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .tag-item {
+            background-color: #e9f7e0;
+            color: var(--primary-color);
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 12px;
+            display: inline-block;
+        }
+        
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        
+        .footer h5 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            background-color: #222;
+            padding: 10px 0;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #6ab73a;
+            border-color: #6ab73a;
+        }
+        
+        .social-icons .fab {
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 8px;
+            transition: all 0.3s;
+        }
+        
+        .social-icons .fab:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .pet-description ul {
+            padding-left: 20px;
+        }
+        
+        .pet-description ul li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .pet-description ul li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <span class="text-dark">PNT</span><span class="text-success">PET</span> 🐱
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">TRANG CHỦ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">GIỚI THIỆU</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">DỊCH VỤ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">THÚ CƯNG</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">BÀI VIẾT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">LIÊN HỆ</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <a href="#" class="btn btn-outline-success btn-sm me-2">ĐĂNG NHẬP</a>
+                        <a href="#" class="btn btn-success btn-sm">ĐĂNG KÝ</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-4">
+        <div class="container">
+            <div class="row">
+                <!-- Pet Details Section -->
+                <div class="col-lg-8">
+                    <!-- Pet Image -->
+                    <div class="pet-image mb-4">
+                        <img src="https://congcutot.vn/uploads/store/page/article/2023/10/thu-cung-voi-moi-truong.jpg" alt="Lola - Mèo Maine Coon" class="img-fluid w-100">
+                    </div>
+                    
+                    <!-- Pet Info -->
+                    <div class="pet-details mb-4">
+                        <h1 class="pet-name">LOLA</h1>
+                        <div class="pet-info text-muted mb-3">
+                            <small><i class="fas fa-calendar-alt me-2"></i>Đăng ngày: 08/03/2025</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <span class="pet-tag"><i class="fas fa-tag me-1"></i>Mèo Maine Coon</span>
+                            <span class="pet-tag"><i class="fas fa-venus-mars me-1"></i>Cái</span>
+                            <span class="pet-tag"><i class="fas fa-birthday-cake me-1"></i>2 tuổi</span>
+                        </div>
+                        
+                        <div class="pet-description">
+                            <p>LOLA là một chú mèo Maine Coon xinh xắn với bộ lông dài mượt. Chúng tôi nhận nuôi cô ấy từ một trại mèo chuyên nghiệp cách đây giờ 1 năm.</p>
+                            
+                            <ul>
+                                <li><strong>Tính cách:</strong> Lola có tính cách thân thiện và cực kỳ thông minh. Cô ấy Thích ngồi trên ghế sofa nhìn ra ngoài cửa sổ và quan sát mọi thứ xung quanh. Lola cũng rất thích chơi với các món đồ chơi.</li>
+                                
+                                <li><strong>Sở thích:</strong> Lola rất thích chơi đùa với đồ chơi chuột và bóng nhỏ. Cô ấy cũng có sở thích đặc biệt là leo trèo lên các kệ sách và nằm ở nơi cao để quan sát.</li>
+                                
+                                <li><strong>Sức khỏe:</strong> Lola đã được tiêm phòng đầy đủ và kiểm tra sức khỏe định kỳ. Cô nàng không có vấn đề gì về sức khỏe và luôn duy trì chế độ ăn uống lành mạnh.</li>
+                                
+                                <li><strong>Thói quen ăn uống:</strong> Lola ăn hầu hết các loại thức ăn dành cho mèo, đặc biệt là thức ăn khô và ướt cao cấp. Cô ấy không kén ăn và luôn hoàn thành bữa ăn của mình.</li>
+                                
+                                <li><strong>Lưu ý:</strong> Lola cần được chải lông thường xuyên do lông dài. Cô nàng thích không gian yên tĩnh và sạch sẽ nên cần được chăm sóc thùng cát hàng ngày. Lola hòa đồng với động vật khác và rất thân thiện với trẻ em.</li>
+                            </ul>
+                            
+                            <div class="alert alert-success mt-4">
+                                <i class="fas fa-info-circle me-2"></i> Chúng tôi muốn tìm một gia đình yêu thương cho Lola, nơi cô ấy có thể được chăm sóc và yêu thương trọn vẹn.
+                            </div>
+                        </div>
+                        
+                        <!-- Social Share -->
+                        <div class="mt-4 d-flex align-items-center">
+                            <span class="me-3">Chia sẻ:</span>
+                            <a href="#" class="btn btn-sm btn-outline-primary me-2"><i class="fab fa-facebook-f me-1"></i>Facebook</a>
+                            <a href="#" class="btn btn-sm btn-outline-info me-2"><i class="fab fa-twitter me-1"></i>Twitter</a>
+                            <a href="#" class="btn btn-sm btn-outline-danger"><i class="fab fa-pinterest me-1"></i>Pinterest</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Comment Section -->
+                    <div class="comment-section">
+                        <h3 class="mb-4">3 COMMENTS</h3>
+                        
+                        <!-- Comment 1 -->
+                        <div class="comment">
+                            <div class="d-flex">
+                                <img src="/api/placeholder/45/45" alt="John Doe" class="comment-avatar me-3">
+                                <div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <h6 class="mb-0 me-2">JOHN DOE</h6>
+                                        <small class="text-muted">24/07/2023 AT 10:46 AM</small>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices eros in tellus feugiat, in tempor enim finibus. Aliquam at eleifend tortor, eu elementum enim. Curabitur porttitor tortor velit.</p>
+                                    <a href="#" class="text-success"><small>REPLY</small></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Comment 2 -->
+                        <div class="comment">
+                            <div class="d-flex">
+                                <img src="/api/placeholder/45/45" alt="Jane Smith" class="comment-avatar me-3">
+                                <div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <h6 class="mb-0 me-2">JANE SMITH</h6>
+                                        <small class="text-muted">23/07/2023 AT 09:30 AM</small>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices eros in tellus feugiat, in tempor enim finibus. Aliquam at eleifend tortor, eu elementum enim. Curabitur porttitor tortor velit.</p>
+                                    <a href="#" class="text-success"><small>REPLY</small></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Comment 3 -->
+                        <div class="comment">
+                            <div class="d-flex">
+                                <img src="/api/placeholder/45/45" alt="Mark Wilson" class="comment-avatar me-3">
+                                <div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <h6 class="mb-0 me-2">MARK WILSON</h6>
+                                        <small class="text-muted">22/07/2023 AT 05:15 PM</small>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices eros in tellus feugiat, in tempor enim finibus. Aliquam at eleifend tortor, eu elementum enim. Curabitur porttitor tortor velit.</p>
+                                    <a href="#" class="text-success"><small>REPLY</small></a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Leave a Comment -->
+                        <div class="mt-5">
+                            <h4 class="mb-4">LEAVE A COMMENT</h4>
+                            <form>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="5" placeholder="Comment"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-success">LEAVE YOUR COMMENT</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <!-- Search -->
+                    <div class="sidebar-card mb-4">
+                        <form class="search-form">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <button class="btn btn-success" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Categories -->
+                    <div class="sidebar-card mb-4">
+                        <h3 class="sidebar-title">DANH MỤC</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 ps-0 pe-0">
+                                <a href="#" class="text-decoration-none text-dark">Chó</a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 ps-0 pe-0">
+                                <a href="#" class="text-decoration-none text-dark">Mèo</a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 ps-0 pe-0">
+                                <a href="#" class="text-decoration-none text-dark">Chim</a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 ps-0 pe-0">
+                                <a href="#" class="text-decoration-none text-dark">Cá</a>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-0 ps-0 pe-0">
+                                <a href="#" class="text-decoration-none text-dark">Thú cưng khác</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Related Pets -->
+                    <div class="sidebar-card mb-4">
+                        <h3 class="sidebar-title">ĐỒNG VẬT LIÊN QUAN</h3>
+                        
+                        <!-- Related pet 1 -->
+                        <div class="related-pet">
+                            <img src="/api/placeholder/60/60" class="related-pet-img" alt="Luna">
+                            <div>
+                                <div class="related-pet-name">Luna</div>
+                                <div class="related-pet-desc">Mèo Ba Tư thuần chủng</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Related pet 2 -->
+                        <div class="related-pet">
+                            <img src="/api/placeholder/60/60" class="related-pet-img" alt="Bella">
+                            <div>
+                                <div class="related-pet-name">Bella</div>
+                                <div class="related-pet-desc">Mèo Anh lông ngắn 3 tuổi</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Related pet 3 -->
+                        <div class="related-pet">
+                            <img src="/api/placeholder/60/60" class="related-pet-img" alt="Whiskers">
+                            <div>
+                                <div class="related-pet-name">Whiskers</div>
+                                <div class="related-pet-desc">Mèo Ragdoll 1 tuổi rưỡi</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tag Cloud -->
+                    <div class="sidebar-card mb-4">
+                        <h3 class="sidebar-title">TAG CLOUD</h3>
+                        <div class="tag-cloud">
+                            <a href="#" class="tag-item">Chó con</a>
+                            <a href="#" class="tag-item">Mèo Maine Coon</a>
+                            <a href="#" class="tag-item">Thú cưng</a>
+                            <a href="#" class="tag-item">Pet</a>
+                            <a href="#" class="tag-item">Mèo lông dài</a>
+                            <a href="#" class="tag-item">Chăm sóc</a>
+                            <a href="#" class="tag-item">Huấn luyện</a>
+                            <a href="#" class="tag-item">Sức khỏe</a>
+                            <a href="#" class="tag-item">Thức ăn</a>
+                            <a href="#" class="tag-item">Mèo con</a>
+                            <a href="#" class="tag-item">Chó Alaska</a>
+                            <a href="#" class="tag-item">Vật nuôi</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Plain Text -->
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-title">PLAIN TEXT</h3>
+                        <p>Hãy đến với cửa hàng thú cưng của chúng tôi - nơi cung cấp các loại thú cưng, thức ăn và dịch vụ chăm sóc uy tín.</p>
+                        <p>Chúng tôi cam kết mang đến những người bạn đồng hành tuyệt vời cho gia đình bạn.</p>
+                        <a href="#" class="btn btn-success btn-sm">XEM THÊM</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- Get in Touch -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>GET IN TOUCH</h5>
+                    <p>123 Đường Lê Lợi, Quận 1, TP.HCM</p>
+                    <p>Email: info@pntpet.com</p>
+                    <p>Hotline: +84 (28) 3829 2932</p>
+                    <div class="social-icons mt-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>QUICK LINKS</h5>
+                    <div class="footer-links">
+                        <a href="#">Trang chủ</a>
+                        <a href="#">Giới thiệu</a>
+                        <a href="#">Dịch vụ</a>
+                        <a href="#">Thú cưng</a>
+                        <a href="#">Liên hệ</a>
+                    </div>
+                </div>
+                
+                <!-- Popular Links -->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>POPULAR LINKS</h5>
+                    <div class="footer-links">
+                        <a href="#">Chó cảnh</a>
+                        <a href="#">Mèo cảnh</a>
+                        <a href="#">Thức ăn thú cưng</a>
+                        <a href="#">Phụ kiện</a>
+                        <a href="#">Chăm sóc thú cưng</a>
+                    </div>
+                </div>
+                
+                <!-- Newsletter -->
+                <div class="col-lg-3 col-md-6">
+                    <h5>NEWSLETTER</h5>
+                    <p>Đăng ký nhận tin tức mới nhất từ chúng tôi</p>
+                    <form>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Email của bạn">
+                            <button class="btn btn-success" type="submit">SEND</button>
+                        </div>
+                    </form>
+                    <p class="small">FOLLOW US</p>
+                    <div class="d-flex">
+                        <a href="#" class="me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Copyright -->
+        <div class="footer-bottom text-center py-3 mt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-md-start">
+                        <p class="mb-0">© 2025 PNTPET. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p class="mb-0">Designed by <a href="#" class="text-white">PNTPET Design</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -39,6 +39,7 @@ include("config.php");
 
 
 <body>
+       <!-- PHẦN KHỞI TẠO MENU  Start -->
     <!-- PHẦN KHỞI TẠO MENU  Start -->
            <?php
            include("process_menu.php");

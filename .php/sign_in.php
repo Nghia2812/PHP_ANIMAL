@@ -1,5 +1,7 @@
 <?php
 include ("process_login.php");
+
+include ("process_register.php");
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -62,44 +64,45 @@ include ("process_login.php");
                     </div>
                     <h3>ĐĂNG KÝ</h3>
      <!-- XỬ LÝ CODE NHẬP TỪ KHÁCH HÀNG -->  
-                    <form>
-                        <div class="input-group">
-                            <div class="input-box">
-                                <input type="text" class="input-field" required>
-                                <label>Tên đăng nhập</label>
-                                <i class="fas fa-user"></i>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <div class="input-box">
-                                <input type="email" class="input-field" required>
-                                <label>Email</label>
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <div class="input-box">
-                                <input type="password" class="input-field" required>
-                                <label>Mật khẩu</label>
-                                <i class="fas fa-lock"></i>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <div class="input-box">
-                                <input type="password" class="input-field" required>
-                                <label>Xác nhận mật khẩu</label>
-                                <i class="fas fa-lock"></i>
-                            </div>
-                        </div>
-                        <button type="submit" class="submit-btn">Đăng ký</button>
-                        <div class="social-login">
-                            <p>Hoặc đăng ký với</p>
-                            <div class="social-icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-google"></i></a>
-                            </div>
-                        </div>
-                    </form>
+     <form action="process_register.php" method="POST">
+    <div class="input-group">
+        <div class="input-box">
+            <input type="text" class="input-field" name="username" required>
+            <label>Tên đăng nhập</label>
+            <i class="fas fa-user"></i>
+        </div>
+    </div>
+    <div class="input-group">
+        <div class="input-box">
+            <input type="email" class="input-field" name="email" required>
+            <label>Email</label>
+            <i class="fas fa-envelope"></i>
+        </div>
+    </div>
+    <div class="input-group">
+        <div class="input-box">
+            <input type="password" class="input-field" name="password" required>
+            <label>Mật khẩu</label>
+            <i class="fas fa-lock"></i>
+        </div>
+    </div>
+    <div class="input-group">
+        <div class="input-box">
+            <input type="password" class="input-field" name="confirm_password" required>
+            <label>Xác nhận mật khẩu</label>
+            <i class="fas fa-lock"></i>
+        </div>
+    </div>
+    <button type="submit" class="submit-btn">Đăng ký</button>
+    <div class="social-login">
+        <p>Hoặc đăng ký với</p>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-google"></i></a>
+        </div>
+    </div>
+</form>
+
                     <button type="button" class="btn" onclick="openLogin()">Tôi đã có tài khoản</button>
                 </div>
             </div>

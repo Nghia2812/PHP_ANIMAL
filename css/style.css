@@ -3069,7 +3069,7 @@ margin-top: 20px;
   left: 0;
   width: 100%;
   height: 0;
-  background: linear-gradient(to top, rgba(13, 110, 253, 0.05), transparent);
+  background: #94bfab;
   z-index: -1;
   transition: height 0.3s ease;
 }
@@ -3314,4 +3314,253 @@ margin-top: 20px;
 
 .dropdown-item i {
   font-size: 16px;
+}
+/* css phần video trang tiêu đề */
+/* Main container styling */
+.container-fluid.hero-header {
+  background-color: #0d6efd;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Text styling */
+.pnt-pet-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.fs-4 {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Button and action area */
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-lg-start {
+  justify-content: flex-start;
+}
+
+.pt-5 {
+  padding-top: 3rem;
+}
+
+/* Call to action button */
+.btn-outline-light {
+  color: #1a8954;
+  border: 2px solid #1a8954;
+  background: transparent;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background-color: #1a8954;
+  color: #eef1f7;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.py-md-3 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.px-md-5 {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.me-5 {
+  margin-right: 3rem;
+}
+
+/* Play button styling */
+.btn-play {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-play:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.btn-play span {
+  border-style: solid;
+  border-width: 10px 0 10px 16px;
+  border-color: transparent transparent transparent #0d6efd;
+  margin-left: 5px;
+}
+
+/* Video text */
+.font-weight-normal {
+  font-weight: normal;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.ms-4 {
+  margin-left: 1.5rem;
+}
+
+/* Responsive elements */
+.d-none {
+  display: none;
+}
+
+.d-sm-block {
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .col-lg-8.text-lg-start {
+    text-align: center;
+  }
+  
+  .justify-content-lg-start {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 992px) {
+  .text-lg-start {
+    text-align: left;
+  }
+}
+/* css hiện thị tài khoản sau khi đăng nhập */
+/* Main user navigation item */
+.nav-item.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1.2rem;
+  color: #2c3e50;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.nav-item.nav-link:hover {
+  background-color: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+}
+
+/* Icon styling */
+.bi-person-circle {
+  font-size: 1.4rem;
+  margin-right: 0.8rem;
+  color: #0d6efd;
+}
+
+/* User dropdown menu container - key fixes here */
+.user-menu-container {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 12rem;
+  padding: 0.5rem 0;
+  transition: visibility 0s, opacity 0.3s;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Fix for dropdown persistence */
+.nav-item.nav-link:hover + .user-menu-container,
+.user-menu-container:hover {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+/* Add space between the menu and link for better hover behavior */
+.user-menu-container {
+  margin-top: 5px;
+}
+
+/* Add an invisible bridge to maintain hover state */
+.nav-item.nav-link::after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+/* Profile link in dropdown */
+.nav-profile {
+  color: #2c3e50;
+  padding: 0.7rem 1.2rem;
+  display: block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+  margin: 2px 0;
+}
+
+.nav-profile:hover {
+  background-color: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+  border-left-color: #0d6efd;
+}
+
+/* Alignment for dropdown items */
+.me-2 {
+  margin-right: 0.5rem;
 }
